@@ -1,0 +1,12 @@
+[submodule "packages/sidetree-core"]
+	path = packages/sidetree-core
+	url = git@github.com:decentralized-identity/sidetree-core.git
+[submodule "packages/sidetree-bitcoin"]
+	path = packages/sidetree-bitcoin
+	url = git@github.com:decentralized-identity/sidetree-bitcoin.git
+[submodule "packages/sidetree-ethereum"]
+	path = packages/sidetree-ethereum
+	url = git@github.com:decentralized-identity/sidetree-ethereum.git
+[submodule "packages/sidetree-ipfs"]
+	path = packages/sidetree-ipfs
+	url = git@github.com:decentralized-identity/sidetree-ipfs.git
