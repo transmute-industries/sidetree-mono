@@ -7,7 +7,7 @@ cache: npm
 before_install:
   # Install Ethereum Dependencies
   - npm i -g ganache-cli@6.3.0 truffle@5.0.3
-  - ganache-cli -m $MNEMONIC &
+  - ganache-cli -m "$MNEMONIC" &
   - sleep 6 # wait for ganache
   # Install IPFS Dependencies
   - wget "https://dist.ipfs.io/go-ipfs/v0.4.9/go-ipfs_v0.4.9_linux-amd64.tar.gz" -O /tmp/ipfs.tar.gz
