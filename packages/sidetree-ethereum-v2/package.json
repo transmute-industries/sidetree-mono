@@ -11,7 +11,7 @@
   "scripts": {
     "start": "node dist/bin/server.js",
     "start:dev": "nodemon dist/bin/server.js",
-    "build": "tsc && cp -r ./src/contracts ./dist/contracts",
+    "build": "tsc && cp -r ./src/contracts ./dist/contracts && cp -r ./src/schemas ./dist/schemas",
     "build:watch": "tsc -w",
     "test": "npm run contracts:migrate:dev && jest --coverage --verbose",
     "test:watch": "yarn test --watch",

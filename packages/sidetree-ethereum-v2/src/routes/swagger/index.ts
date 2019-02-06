@@ -18,7 +18,7 @@ const swaggerDoc = swaggerJSDoc({
   apis: [path.resolve(__dirname, '../**/*.js')]
 });
 
-const schemaDirName = path.resolve(__dirname, '../../../schemas');
+const schemaDirName = path.resolve(__dirname, '../../schemas');
 // eslint-disable-next-line
 fs.readdirSync(schemaDirName)
   .filter(fileName => /.*.json$/.test(fileName))

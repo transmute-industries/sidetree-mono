@@ -14,7 +14,7 @@ const router = new Router();
  *       produces:
  *       - application/json
  *       responses:
- *          '400':
+ *         '400':
  *           description: 'anchorFileHash is missing or invalid.'
  *         '200':
  *           description: 'A list transactions representing a batch of Sidetree operations.'

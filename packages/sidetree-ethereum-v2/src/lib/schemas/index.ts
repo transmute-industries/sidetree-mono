@@ -15,14 +15,14 @@ export default {
   BlockchainTime: JSON.parse(
     fs
       .readFileSync(
-        path.resolve(__dirname, '../../../schemas/BlockchainTime.json')
+        path.resolve(__dirname, '../../schemas/BlockchainTime.json')
       )
       .toString()
   ),
   BlockchainTransaction: JSON.parse(
     fs
       .readFileSync(
-        path.resolve(__dirname, '../../../schemas/BlockchainTransaction.json')
+        path.resolve(__dirname, '../../schemas/BlockchainTransaction.json')
       )
       .toString()
   )

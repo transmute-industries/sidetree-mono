@@ -8,7 +8,7 @@ const AnchorContractArtifact = require("../contracts/SimpleSidetreeAnchor.json")
 
 export const app = {
   env: process.env.NODE_ENV || 'development',
-  port: process.env.APP_PORT || '3000'
+  port: process.env.APP_PORT || '3002'
 };
 
 let mnemonic = '';
