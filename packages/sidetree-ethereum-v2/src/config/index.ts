@@ -4,7 +4,7 @@ dotenv.config({ path: process.env.DOTENV_PATH });
 import ethereumUtils from '../util/ethereum';
 
 // tslint:disable-next-line
-const AnchorContractArtifact = require("../../build/contracts/SimpleSidetreeAnchor.json");
+const AnchorContractArtifact = require("../contracts/SimpleSidetreeAnchor.json");
 
 export const app = {
   env: process.env.NODE_ENV || 'development',

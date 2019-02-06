@@ -1,11 +1,11 @@
-FROM node:10-alpine
+FROM node:lts
 
 WORKDIR /app
 
-COPY package.json yarn.lock /app/
+COPY package.json /app/
 
 RUN yarn --pure-lockfile
 
 COPY dist dist/
 
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]

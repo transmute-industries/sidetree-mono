@@ -1,0 +1,17 @@
+version: "3"
+services:
+  # sidetree-core:
+  #   build: ./packages/sidetree-core
+  #   ports:
+  #     - "3000:3000"
+  # sidetree-ipfs:
+  #   build: ./packages/sidetree-ipfs
+  #   ports:
+  #     - "3001:3001"
+  sidetree-ethereum:
+    build: ./packages/sidetree-ethereum-v2
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./packages/sidetree-ethereum-v2/.env
+

@@ -11,12 +11,12 @@
   "scripts": {
     "start": "node dist/bin/server.js",
     "start:dev": "nodemon dist/bin/server.js",
-    "build": "tsc",
+    "build": "tsc && cp -r ./src/contracts ./dist/contracts",
     "build:watch": "tsc -w",
     "test": "npm run contracts:migrate:dev && jest --coverage --verbose",
     "test:watch": "yarn test --watch",
     "contracts:test": "truffle test ./test/Ethereum/*",
-    "contracts:migrate:dev": "truffle migrate --network development",
+    "contracts:migrate:dev": "truffle migrate --network development && cp -r ./build/contracts/ ./src/contracts/",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "lint:fix": "tslint --fix --project .",
     "start-ganache": ". ./.env && ganache-cli -m \"$MNEMONIC\""
