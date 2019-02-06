@@ -1,11 +1,4 @@
 /**
- * Defines a Sidetree response object.
- */
-interface Response {
-  status: ResponseStatus;
-  body?: object;
-}
-/**
  * Possible Sidetree response status.
  */
 enum ResponseStatus {
@@ -14,6 +7,21 @@ enum ResponseStatus {
   NotFound,
   ServerError
 }
+
+/**
+ * Defines a Sidetree response object.
+ */
+interface Response {
+  /**
+   * HTTP Status Code
+   */
+  status: ResponseStatus;
+  /**
+   * HTTP Response Body JSON Object
+   */
+  body?: object;
+}
+
 /**
  * Converts a Sidetree response status to an HTTP status.
  */

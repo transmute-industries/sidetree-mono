@@ -3,8 +3,9 @@ import app from '../../../app';
 
 import schemas from '../../../lib/schemas';
 
-let anchorFileHash =
-  '3ddbe2be8cfc5313f6160bfa263651f000fb70e5a6af72f3de798fa58933f3d9';
+import fixtures from '../../../../test/__fixtures__';
+
+const { anchorFileHash } = fixtures;
 
 describe('Transactions Routes', () => {
   let server: any;
@@ -29,6 +30,7 @@ describe('Transactions Routes', () => {
     });
 
     it('should returns 200 when anchorFileHash is valid', async () => {
+      console.log(anchorFileHash);
       const res = await request
         .post('/v1.0/transactions')
         .send({ anchorFileHash });
@@ -63,7 +65,6 @@ describe('Transactions Routes', () => {
         schemas.isValid(res.body.transactions[0], schemas.BlockchainTransaction)
       ).toBe(true);
       expect(res.body.moreTransactions).toBe(false);
-
     });
   });
 

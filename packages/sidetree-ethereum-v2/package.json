@@ -1,5 +1,5 @@
 {
-  "name": "sidetree-ethereum",
+  "name": "sidetree-ethereum-v2",
   "version": "0.1.0",
   "description": "Node.js implementation of the Sidetree ethereum module",
   "repository": {
@@ -17,7 +17,8 @@
     "test:watch": "yarn test --watch",
     "contracts:test": "truffle test ./test/Ethereum/*",
     "contracts:migrate:dev": "truffle migrate --network development",
-    "lint": "tslint -c tslint.json -p tsconfig.json"
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "lint:fix": "tslint --fix --project ."
   },
   "dependencies": {
     "@koa/cors": "^2.2.1",
@@ -43,6 +44,7 @@
     "koa-router-version": "^1.2.0",
     "koa-static": "^5.0.0",
     "lodash": "^4.17.10",
+    "multihashes": "^0.4.14",
     "node-fetch": "^2.3.0",
     "swagger-jsdoc": "^3.2.6",
     "swagger-ui-koa": "0.0.1",
@@ -77,7 +79,7 @@
     "ts-jest": "^22.4.6",
     "ts-node": "^6.1.1",
     "tslint": "^5.10.0",
-    "tslint-config-standard": "^7.0.0",
+    "tslint-config-standard": "^8.0.1",
     "typescript": "^2.9.2"
   }
 }

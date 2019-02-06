@@ -7,15 +7,23 @@ const HDWalletProvider = require("truffle-hdwallet-provider");
 
 import config from '../config';
 
-export default class Web3Service {
-  public web3: any;
-  public anchorContractArtifact: any;
+import encoding from '../util/encoding';
 
-  public anchorContract: any;
+/**
+ * Web3Service Service for communicating with ethereum using HDWallet Provider and WebSockets
+ */
+export default class Web3Service {
+  /**
+   * @property Web3 instance for communicating with ethereum
+   */
+  private web3: any;
+  private anchorContractArtifact: any;
+
+  private anchorContract: any;
 
   private provider: any;
 
-  constructor (public providerUrl: string) {
+  constructor (providerUrl: string) {
     const isLocal = providerUrl.indexOf('localhost') !== -1;
     const subProvider = new Web3.providers.WebsocketProvider(providerUrl);
     this.provider = isLocal
@@ -27,12 +35,19 @@ export default class Web3Service {
     this.anchorContract.setProvider(this.web3.currentProvider);
   }
 
-  // https://github.com/decentralized-identity/sidetree-core/blob/master/docs/implementation.md#get-latest-blockchain-time
+  /**
+   * Get latest block number and block hash
+   * @link https://github.com/decentralized-identity/sidetree-core/blob/master/docs/implementation.md#get-latest-blockchain-time
+   */
   public getLatestBlockchainTime = async () => {
     const blockNumber = await this.web3.eth.getBlockNumber();
     return this.getBlockchainTime(blockNumber);
   }
 
+  /**
+   * Get block number and block hash from block number or block hash
+   * @link https://github.com/decentralized-identity/sidetree-core/blob/master/docs/implementation.md#get-blockchain-time-by-hash
+   */
   public getBlockchainTime = async (
     blockHashOrBlockNumber: number | string
   ) => {
@@ -45,6 +60,10 @@ export default class Web3Service {
     };
   }
 
+  /**
+   * Anchor a hex encoded anchorFileHash as bytes32
+   * @link https://github.com/decentralized-identity/sidetree-core/blob/master/docs/implementation.md#write-a-sidetree-transaction
+   */
   public anchorHash = async (bytes32EncodedHash: string) => {
     const instance = await this.anchorContract.deployed();
     return instance.anchorHash(bytes32EncodedHash, {
@@ -52,6 +71,10 @@ export default class Web3Service {
     });
   }
 
+  /**
+   * Get all sidetree transactions from a given block
+   * @link https://github.com/decentralized-identity/sidetree-core/blob/master/docs/implementation.md#request-query-parameters
+   */
   public getTransactions = async (fromBlock: number = 0) => {
     const instance = await this.anchorContract.deployed();
     const logs = await instance.getPastEvents('Anchor', {
@@ -64,11 +87,17 @@ export default class Web3Service {
         transactionTime: log.blockNumber,
         transactionTimeHash: log.blockHash,
         transactionNumber: log.args.transactionNumber.toNumber(),
-        anchorFileHash: log.args.anchorFileHash.replace('0x', '')
+        anchorFileHash: encoding.bytes32EnodedMultihashToBase58EncodedMultihash(
+          log.args.anchorFileHash
+        )
       };
     });
   }
 
+  /**
+   * Get all sidetree transactions from a transactionNumber and transactionTimeHash
+   * @link https://github.com/decentralized-identity/sidetree-core/blob/master/docs/implementation.md#request-query-parameters
+   */
   public getTransactionsSince = async (
     transactionNumber: number,
     transactionTimeHash: string
@@ -80,12 +109,18 @@ export default class Web3Service {
     });
   }
 
+  /**
+   * Subscribe to sidetree events
+   */
   public subscribeToAnchorEvents = async (callback: Function) => {
     const instance = await this.anchorContract.deployed();
     const subscription = instance.Anchor(callback);
     return subscription;
   }
 
+  /**
+   * Gracefully close web3 connection
+   */
   public stop = () => {
     this.provider.engine.stop();
     this.web3.currentProvider.engine.stop();
