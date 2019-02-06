@@ -5,7 +5,6 @@
 
 Mono repo of sidetree submodules, for testing integrations.
 
-
 ```
 git submodule update --init --recursive
 npm i
