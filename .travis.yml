@@ -6,7 +6,7 @@ cache: npm
 
 before_install:
   # Install Ethereum Dependencies
-  - npm i -g lerna ganache-cli@6.3.0 truffle@5.0.3
+  - npm i -g lerna@3.6.0 ganache-cli@6.3.0 truffle@5.0.3
   - ganache-cli -m "$MNEMONIC" &>/dev/null &
   - sleep 6 # wait for ganache
   # Install IPFS Dependencies
@@ -23,9 +23,8 @@ before_install:
 
 install:
   - npm i
-  - npm run bootstrap
+  - lerna bootstrap
 
 script:
-  - npm run lint
-  - npm run test 
+  - lerna run test
   - npm run codecov
