@@ -17,9 +17,9 @@ before_install:
   - ipfs daemon &>/dev/null &
   - sleep 5 # wait for ipfs
   # Check IPFS
-  - curl http://localhost:5001/api/v0/id | jq
+  - curl http://localhost:5001/api/v0/id | jq -r '.'
   # Check Ganache
-  - curl -s -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":0}' http://localhost:8545 | jq
+  - curl -s -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":0}' http://localhost:8545 | jq -r '.'
 
 install:
   - npm i
