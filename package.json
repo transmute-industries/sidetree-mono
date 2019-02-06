@@ -5,7 +5,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "lint": "lerna run lint",
-    "test": "lerna run test --ignore sidetree-ethereum",
+    "test": "lerna run test --ignore sidetree-ethereum --ignore sidetree-core",
     "codecov": "codecov"
   },
   "devDependencies": {
