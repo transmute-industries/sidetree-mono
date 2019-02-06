@@ -1,5 +1,5 @@
 import compose from 'koa-compose';
-import bodyParser from 'koa-body';
+import bodyParser from 'koa-bodyparser';
 import compress from 'koa-compress';
 import logger from 'koa-pino-logger';
 import helmet from 'koa-helmet';
