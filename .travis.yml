@@ -6,7 +6,7 @@ cache: npm
 
 before_install:
   # Install Ethereum Dependencies
-  - npm i -g ganache-cli@6.1.0 truffle@4.1.14
+  - npm i -g ganache-cli@6.3.0 truffle@5.0.3
   - ganache-cli -m \"$MNEMONIC\" &>/dev/null &
   - sleep 6 # wait for ganache
   # Install IPFS Dependencies
@@ -17,9 +17,9 @@ before_install:
   - ipfs daemon &>/dev/null &
   - sleep 5 # wait for ipfs
   # Check IPFS
-  - curl http://localhost:5001/api/v0/id
+  - curl http://localhost:5001/api/v0/id | jq
   # Check Ganache
-  - curl -X POST --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":0}' http://localhost:8545
+  - curl -s -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":0}' http://localhost:8545 | jq
 
 install:
   - npm i
@@ -27,5 +27,5 @@ install:
 
 script:
   - npm run lint
-  - npm run test
+  - npm run test --ignore sidetree-ethereum
   - npm run codecov
