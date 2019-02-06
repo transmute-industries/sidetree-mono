@@ -13,12 +13,13 @@
     "start:dev": "nodemon dist/bin/server.js",
     "build": "tsc",
     "build:watch": "tsc -w",
-    "test": "jest --coverage --verbose",
+    "test": "npm run contracts:migrate:dev && jest --coverage --verbose",
     "test:watch": "yarn test --watch",
     "contracts:test": "truffle test ./test/Ethereum/*",
     "contracts:migrate:dev": "truffle migrate --network development",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "lint:fix": "tslint --fix --project ."
+    "lint:fix": "tslint --fix --project .",
+    "start-ganache": ". ./.env && ganache-cli -m \"$MNEMONIC\""
   },
   "dependencies": {
     "@koa/cors": "^2.2.1",

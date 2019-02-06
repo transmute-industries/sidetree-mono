@@ -30,7 +30,6 @@ describe('Transactions Routes', () => {
     });
 
     it('should returns 200 when anchorFileHash is valid', async () => {
-      console.log(anchorFileHash);
       const res = await request
         .post('/v1.0/transactions')
         .send({ anchorFileHash });

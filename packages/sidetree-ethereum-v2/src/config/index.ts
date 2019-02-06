@@ -24,6 +24,6 @@ export default {
   mnemonic,
   sidetreeEthereumNodeAccount: ethereumUtils.mnemonicToAccount(
     mnemonic,
-    "m/44'/60'/0'/0/0"
+    "m/44'/60'/0'/0 /0"
   )
 };
