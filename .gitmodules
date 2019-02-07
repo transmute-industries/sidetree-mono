@@ -1,0 +1,3 @@
+[submodule "packages/sidetree-ethereum"]
+	path = packages/sidetree-ethereum
+	url = https://github.com/decentralized-identity/sidetree-ethereum.git
