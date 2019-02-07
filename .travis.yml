@@ -25,9 +25,9 @@ before_install:
 
 install:
   - npm i
-#   - npm run bootstrap
+  - npm run bootstrap
 
-# script:
-#   - npm run contracts
-#   - npm run test
-#   - npm run codecov
+script:
+  - npm run contracts
+  - npm run test
+  - npm run codecov
