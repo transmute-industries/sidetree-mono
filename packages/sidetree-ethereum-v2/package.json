@@ -13,7 +13,7 @@
     "start:dev": "nodemon dist/bin/server.js",
     "build": "tsc && cp -r ./src/contracts ./dist/contracts && cp -r ./src/schemas ./dist/schemas",
     "build:watch": "tsc -w",
-    "test": "npm run contracts:migrate:dev && jest --coverage --verbose",
+    "test": "npm run contracts:migrate:dev && jest --coverage --verbose --runInBand --forceExit ",
     "test:watch": "yarn test --watch",
     "contracts:test": "truffle test ./test/Ethereum/*",
     "contracts:migrate:dev": "truffle migrate --network development && cp -r ./build/contracts/ ./src/contracts/",
