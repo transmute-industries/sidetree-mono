@@ -23,11 +23,11 @@ before_install:
   - curl -s -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x6bb093d7bbe83e19ae8173ee29e8830521e1bbb3", "latest"],"id":1}' http://localhost:8545 | jq -r '.'
 
 
-install:
-  - npm i
-  - npm run bootstrap
+# install:
+#   - npm i
+#   - npm run bootstrap
 
-script:
-  - npm run contracts
-  - npm run test
-  - npm run codecov
+# script:
+#   - npm run contracts
+#   - npm run test
+#   - npm run codecov
