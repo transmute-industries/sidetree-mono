@@ -7,6 +7,7 @@
     "lint": "lerna run lint",
     "contracts": "lerna run contracts:migrate:dev && lerna run contracts:test --ignore sidetree-ethereum",
     "test": "lerna run test --ignore sidetree-ethereum",
+    "build": "lerna run build --ignore sidetree-ethereum",
     "codecov": "codecov"
   },
   "devDependencies": {
