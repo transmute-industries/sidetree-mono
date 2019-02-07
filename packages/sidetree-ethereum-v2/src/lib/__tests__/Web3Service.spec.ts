@@ -56,10 +56,13 @@ describe('Web3 Service', () => {
 
   describe('getTransactions', () => {
     let lastTransaction;
+
     it('should return all transactions', async () => {
+      await web3Svc.anchorHash(anchorFileHash);
       let transactions = await web3Svc.getTransactions();
       expect(transactions[0].anchorFileHash).toBeDefined();
-      lastTransaction = transactions[transactions.length - 2];
+      lastTransaction = transactions[transactions.length - 1];
+      await web3Svc.anchorHash(anchorFileHash);
     });
 
     it('should return all transactions since transactionTime, transactionTimeHash', async () => {

@@ -45,7 +45,10 @@ describe('Transactions Routes', () => {
       expect(
         schemas.isValid(res.body.transactions[0], schemas.BlockchainTransaction)
       ).toBe(true);
-      lastTransaction = res.body.transactions[res.body.transactions.length - 2];
+      lastTransaction = res.body.transactions[res.body.transactions.length - 1];
+      await request
+      .post('/v1.0/transactions')
+      .send({ anchorFileHash });
     });
 
     it('should support since & transactionTimeHash', async () => {

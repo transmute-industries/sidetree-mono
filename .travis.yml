@@ -26,5 +26,6 @@ install:
   - npm run bootstrap
 
 script:
+  - npm run contracts
   - npm run test
   - npm run codecov

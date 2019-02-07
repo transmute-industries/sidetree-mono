@@ -5,6 +5,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "lint": "lerna run lint",
+    "contracts": "lerna run contracts:migrate:dev && lerna run contracts:test --ignore sidetree-ethereum",
     "test": "lerna run test --ignore sidetree-ethereum",
     "codecov": "codecov"
   },
