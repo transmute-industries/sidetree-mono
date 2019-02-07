@@ -23,12 +23,19 @@ export default class Web3Service {
 
   private provider: any;
 
-  constructor (providerUrl: string) {
-    const isLocal = providerUrl.indexOf('localhost') !== -1;
-    const subProvider = new Web3.providers.WebsocketProvider(providerUrl);
-    this.provider = isLocal
-      ? subProvider
-      : new HDWalletProvider(config.mnemonic, subProvider);
+  constructor () {
+    if (
+      config.web3Provider === 'http://localhost:8545' ||
+      config.web3Provider === 'http://ganache:8545'
+    ) {
+      this.provider = new Web3.providers.WebsocketProvider(config.web3Provider);
+    } else {
+      this.provider = new HDWalletProvider(
+        config.mnemonic,
+        config.web3Provider
+      );
+    }
+
     this.web3 = new Web3(this.provider);
     this.anchorContractArtifact = config.AnchorContractArtifact;
     this.anchorContract = contract(this.anchorContractArtifact);

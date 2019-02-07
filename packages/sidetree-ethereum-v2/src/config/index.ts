@@ -18,10 +18,18 @@ if (!process.env.MNEMONIC) {
   mnemonic = process.env.MNEMONIC;
 }
 
+let web3Provider = '';
+if (!process.env.WEB3_PROVIDER) {
+  throw new Error('WEB3_PROVIDER is required environment variable.');
+} else {
+  web3Provider = process.env.WEB3_PROVIDER;
+}
+
 export default {
   app,
   AnchorContractArtifact,
   mnemonic,
+  web3Provider,
   sidetreeEthereumNodeAccount: ethereumUtils.mnemonicToAccount(
     mnemonic,
     "m/44'/60'/0'/0 /0"

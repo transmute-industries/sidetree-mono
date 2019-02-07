@@ -13,8 +13,8 @@ export default class RequestHandler {
   /**
    * @param web3ProviderUrl URI for the blockchain service
    */
-  public constructor (public web3ProviderUrl: string) {
-    this.web3Svc = new Web3Service(this.web3ProviderUrl);
+  public constructor () {
+    this.web3Svc = new Web3Service();
   }
 
   /**

@@ -2,9 +2,9 @@ FROM node:lts
 
 WORKDIR /app
 
-COPY package.json /app/
+COPY package.json package-lock.json /app/
 
-RUN yarn --pure-lockfile
+RUN npm i
 
 COPY dist dist/
 

@@ -1,4 +1,5 @@
 version: "3"
+
 services:
   # sidetree-core:
   #   build: ./packages/sidetree-core
@@ -13,5 +14,26 @@ services:
     ports:
       - "3002:3002"
     env_file:
-      - ./packages/sidetree-ethereum-v2/.env
+      - ./packages/sidetree-ethereum-v2/docker.env
+    links:
+      - "ganache:ganache"
+  ganache:
+    image: trufflesuite/ganache-cli:latest
+    ports:
+      - "8545:8545"
+    volumes:
+    - ./ganache_data:/ganache_data
+    entrypoint:
+      - node
+      - ./build/cli.node.js
+      - --deterministic
+      - --db=/ganache_data
+      - --mnemonic
+      - 'weird ensure parent humor crawl doctor machine narrow subway bleak panel worth'
+      - --networkId
+      - '5777'
+      - --hostname
+      - '0.0.0.0'
+      - --debug
+
 

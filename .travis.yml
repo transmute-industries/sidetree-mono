@@ -20,6 +20,8 @@ before_install:
   - curl http://localhost:5001/api/v0/id | jq -r '.'
   # Check Ganache
   - curl -s -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":0}' http://localhost:8545 | jq -r '.'
+  - curl -s -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x6bb093d7bbe83e19ae8173ee29e8830521e1bbb3", "latest"],"id":1}' http://localhost:8545 | jq -r '.'
+
 
 install:
   - npm i
