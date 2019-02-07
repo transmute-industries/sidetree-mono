@@ -25,5 +25,13 @@ export default {
         path.resolve(__dirname, '../../schemas/BlockchainTransaction.json')
       )
       .toString()
+  ),
+
+  CreateTransaction: JSON.parse(
+    fs
+      .readFileSync(
+        path.resolve(__dirname, '../../schemas/CreateTransaction.json')
+      )
+      .toString()
   )
 };

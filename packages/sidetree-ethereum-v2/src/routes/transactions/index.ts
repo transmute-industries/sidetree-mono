@@ -13,6 +13,14 @@ const router = new Router();
  *       tags: [Blockchain]
  *       produces:
  *       - application/json
+ *       parameters:
+ *       - in: body
+ *         name: anchorFile
+ *         required: true
+ *         type: string
+ *         example: QmcModh3cTgSpr8A6m7jNHnwVZRGZsepWv3uaFtD5KhL2U
+ *         schema:
+ *           "$ref": "#/definitions/CreateTransaction"
  *       responses:
  *         '400':
  *           description: 'anchorFileHash is missing or invalid.'
