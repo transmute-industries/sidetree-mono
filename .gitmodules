@@ -7,3 +7,6 @@
 [submodule "packages/sidetree-core"]
 	path = packages/sidetree-core
 	url = https://github.com/decentralized-identity/sidetree-core.git
+[submodule "packages/sidetree-bitcoin"]
+	path = packages/sidetree-bitcoin
+	url = https://github.com/decentralized-identity/sidetree-bitcoin.git
